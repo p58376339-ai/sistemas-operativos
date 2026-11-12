@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sistemas Operativos – Contenidos del curso</title>
+<style>
+:root{--bg:#070b18;--card:#101733;--tx:#e8ecff;--mu:#97a3c9;--a:#4de1ff;--b:#a06bff;--bd:#222c55;--ok:#3df5a0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f2f5ff;--card:#fff;--tx:#14193a;--mu:#56608a;--a:#0a7cff;--b:#7a3cff;--bd:#d9e0f5;--ok:#0a9b63}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.65}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--a),var(--b));z-index:20}
+nav{position:sticky;top:0;z-index:10;display:flex;gap:2px;overflow-x:auto;white-space:nowrap;padding:10px 12px;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd)}
+nav a{color:var(--mu);text-decoration:none;font-size:.82rem;padding:5px 10px;border-radius:99px;transition:.25s}
+nav a:hover{color:var(--bg);background:var(--a)}
+.hero{position:relative;min-height:92vh;display:grid;place-items:center;text-align:center;overflow:hidden;padding:40px 20px}
+#cv{position:absolute;inset:0;width:100%;height:100%}
+.hero div{position:relative}
+.tag{display:inline-block;border:1px solid var(--a);color:var(--a);border-radius:99px;padding:4px 16px;font-size:.85rem;animation:pulse 2.5s infinite}
+h1{font-size:clamp(2.4rem,9vw,5.5rem);margin:16px 0 6px;line-height:1.05;background:linear-gradient(90deg,var(--a),var(--b),var(--a));background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 6s linear infinite}
+.type{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--ok);min-height:1.8em;font-size:1.1rem}
+.type::after{content:"▋";animation:blink 1s infinite}
+.meta{color:var(--mu);margin-top:18px}
+.scroll{margin-top:30px;color:var(--mu);animation:bounce 1.6s infinite}
+main{max-width:920px;margin:0 auto;padding:10px 16px 60px}
+section{margin:44px 0}
+h2{font-size:clamp(1.5rem,4vw,2.1rem);margin:0 0 14px}
+h2 .n{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:12px;margin-right:12px;font-size:1.1rem;color:#fff;background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 0 20px color-mix(in srgb,var(--a) 50%,transparent)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:18px 20px;transition:.3s}
+.card:hover{transform:translateY(-4px);border-color:var(--a);box-shadow:0 10px 30px color-mix(in srgb,var(--a) 18%,transparent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:14px 0}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .7s,transform .7s}
+.rv.on{opacity:1;transform:none}
+.tl{position:relative;margin:14px 0 14px 14px;padding-left:26px;border-left:2px solid var(--bd)}
+.tl .it{position:relative;margin-bottom:16px}
+.tl .it::before{content:"";position:absolute;left:-35px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--a);box-shadow:0 0 0 4px var(--bg),0 0 14px var(--a)}
+.tl b{color:var(--a)}
+.scr{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{padding:8px 10px;border-bottom:1px solid var(--bd);text-align:center}
+th{color:var(--a)}
+code,.mono{font-family:ui-monospace,Menlo,Consolas,monospace}
+code{background:var(--bg);padding:1px 6px;border-radius:6px;color:var(--ok)}
+button{cursor:pointer;border:0;border-radius:99px;padding:9px 20px;color:#fff;font-weight:600;background:linear-gradient(135deg,var(--a),var(--b));transition:.2s;margin:4px 6px 4px 0}
+button:hover{transform:scale(1.06)}
+button.g{background:var(--bd);color:var(--tx)}
+.st{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:14px 0}
+.s{padding:10px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--card);cursor:pointer;transition:.3s;font-size:.9rem}
+.s.on{background:linear-gradient(135deg,var(--a),var(--b));color:#fff;transform:scale(1.12);box-shadow:0 0 22px var(--a)}
+.ar{color:var(--mu)}
+#sd{text-align:center;color:var(--mu);min-height:3em}
+.thr{margin-top:10px}
+.th{height:26px;border-radius:8px;margin:8px 0;background:var(--bd);overflow:hidden;position:relative}
+.th i{position:absolute;inset:0;width:0;background:linear-gradient(90deg,var(--a),var(--b));animation:run 3s ease-in-out infinite;border-radius:8px}
+.th span{position:relative;z-index:1;font-size:.78rem;padding-left:10px;line-height:26px;color:#fff;mix-blend-mode:normal}
+.mem{border:2px dashed var(--a);border-radius:12px;padding:6px 14px;text-align:center;color:var(--a);font-size:.85rem;margin-bottom:6px}
+tr.fin td{color:var(--ok);font-weight:700}
+tr.cur td{background:color-mix(in srgb,var(--a) 25%,transparent)}
+.bd{height:8px;border-radius:9px;background:var(--bd);margin:3px 0 8px;overflow:hidden}
+.bd i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--a),var(--b));transition:width 1.2s ease .3s}
+.on .bd i{width:var(--w)}
+.lb{font-size:.78rem;color:var(--mu);display:flex;justify-content:space-between}
+.note{border-left:4px solid var(--b);padding:8px 14px;background:var(--card);border-radius:0 10px 10px 0;margin:12px 0}
+footer{text-align:center;color:var(--mu);padding:30px;font-size:.85rem}
+@keyframes flow{to{background-position:200%}}
+@keyframes blink{50%{opacity:0}}
+@keyframes pulse{50%{box-shadow:0 0 18px var(--a)}}
+@keyframes bounce{50%{transform:translateY(8px)}}
+@keyframes run{0%{width:5%}50%{width:100%}100%{width:5%}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<nav><a href="#portada">Portada</a><a href="#intro">Introducción</a><a href="#t1">Orígenes</a><a href="#t2">Historia</a><a href="#t3">Evolución</a><a href="#t4">Hardware y software</a><a href="#t5">Ecosistema</a><a href="#t6">Componentes</a><a href="#t7">Banquero</a><a href="#t8">Hilos</a><a href="#t9">Procesos</a><a href="#t10">Comentario</a><a href="#t11">Servidores</a></nav>
+
+<header class="hero" id="portada">
+<canvas id="cv"></canvas>
+<div>
+<span class="tag">Sistemas Operativos 1</span>
+<h1>Sistemas<br>Operativos</h1>
+<div class="type" id="ty"></div>
+<p class="meta"><b>Estudiante:</b> Kevin Emanuel Gutiérrez Castillo · <b>Carné:</b> 6691-23-8694<br><b>Curso:</b> Sistemas Operativos 1 · Guatemala 2026</p>
+<div class="scroll">↓ desliza para explorar ↓</div>
+</div>
+</header>
+
+<main>
+<section id="intro" class="rv">
+<h2>Introducción</h2>
+<div class="card"><p>El sistema operativo (SO) es el software que administra los recursos de una computadora (procesador, memoria, almacenamiento y dispositivos) y ofrece a usuarios y programas una interfaz sencilla para usarlos. Sin él, cada aplicación tendría que controlar el hardware directamente.</p>
+<p>Esta página reúne los temas del curso: desde los orígenes de la tecnología y la historia de los SO hasta procesos, hilos y el algoritmo del banquero, cerrando con una comparación de sistemas operativos para servidores.</p></div>
+</section>
+
+<section id="t1" class="rv">
+<h2><span class="n">1</span>Orígenes y evolución temprana de la tecnología</h2>
+<div class="tl">
+<div class="it"><b>≈2500 a. C. · Ábaco</b><br>Primera herramienta de cálculo manual.</div>
+<div class="it"><b>1642 · Pascalina</b><br>Blaise Pascal crea una calculadora mecánica.</div>
+<div class="it"><b>1837 · Máquina Analítica</b><br>Charles Babbage diseña la primera computadora programable; Ada Lovelace escribe el primer algoritmo para una máquina.</div>
+<div class="it"><b>1946 · ENIAC</b><br>Primera computadora electrónica de propósito general, con tubos de vacío.</div>
+<div class="it"><b>1947 · Transistor</b><br>Equipos más pequeños y fiables.</div>
+<div class="it"><b>1958 · Circuito integrado</b><br>Miles de transistores en un solo chip.</div>
+<div class="it"><b>1971 · Microprocesador</b><br>El Intel 4004 abre el camino a la computadora personal.</div>
+</div>
+</section>
+
+<section id="t2" class="rv">
+<h2><span class="n">2</span>Breve historia de los sistemas operativos</h2>
+<div class="tl">
+<div class="it"><b>Años 40</b><br>Sin SO: los programas se cargaban directamente en la máquina.</div>
+<div class="it"><b>Años 50</b><br>Procesamiento por lotes y monitores residentes (GM-NAA I/O, 1956).</div>
+<div class="it"><b>Años 60</b><br>Multiprogramación y tiempo compartido (CTSS, Multics, OS/360).</div>
+<div class="it"><b>1969 · UNIX</b><br>Ken Thompson y Dennis Ritchie lo crean en Bell Labs.</div>
+<div class="it"><b>1981–1984</b><br>MS-DOS con la IBM PC; Apple lanza Macintosh con interfaz gráfica.</div>
+<div class="it"><b>1985–1995 · Windows</b><br>De entorno sobre DOS a sistema completo (Windows 95, NT).</div>
+<div class="it"><b>1991 · Linux</b><br>Linus Torvalds publica el kernel Linux.</div>
+<div class="it"><b>2007–2008</b><br>iOS y Android inician la era móvil.</div>
+</div>
+</section>
+
+<section id="t3" class="rv">
+<h2><span class="n">3</span>Evolución de los sistemas operativos</h2>
+<div class="grid">
+<div class="card"><b>1945–55</b><br>Sin SO<br><small>Operación manual, tubos de vacío, tarjetas perforadas.</small></div>
+<div class="card"><b>1955–65</b><br>Lotes<br><small>Trabajos agrupados, sin interacción.</small></div>
+<div class="card"><b>1965–80</b><br>Tiempo compartido<br><small>Varios programas en memoria y varios usuarios.</small></div>
+<div class="card"><b>1980–2000</b><br>Computadora personal<br><small>Interfaz gráfica y redes.</small></div>
+<div class="card"><b>2000–hoy</b><br>Nube y móviles<br><small>Virtualización, contenedores, IoT.</small></div>
+</div>
+</section>
+
+<section id="t4" class="rv">
+<h2><span class="n">4</span>Hardware y software de la computadora</h2>
+<div class="grid">
+<div class="card"><h3>⚙️ Hardware</h3><p>Parte física: <b>CPU</b>, <b>RAM</b>, almacenamiento (HDD/SSD), placa madre y dispositivos de entrada y salida.</p></div>
+<div class="card"><h3>💾 Software</h3><p><b>De sistema:</b> SO, drivers, firmware (UEFI).<br><b>De aplicación:</b> navegadores, juegos, ofimática.<br><b>De desarrollo:</b> compiladores y editores.</p></div>
+</div>
+<div class="note">El SO es el intermediario: las aplicaciones piden servicios mediante <i>llamadas al sistema</i> y el SO habla con el hardware.</div>
+</section>
+
+<section id="t5" class="rv">
+<h2><span class="n">5</span>Ecosistema del sistema operativo</h2>
+<div class="grid">
+<div class="card">🔌 <b>Hardware y drivers</b><br><small>Fabricantes que hacen compatible el equipo.</small></div>
+<div class="card">🛒 <b>Aplicaciones y tiendas</b><br><small>Microsoft Store, App Store, Google Play, repositorios Linux.</small></div>
+<div class="card">🧑‍💻 <b>Herramientas de desarrollo</b><br><small>SDK, APIs, lenguajes e IDE.</small></div>
+<div class="card">☁️ <b>Servicios en la nube</b><br><small>iCloud, OneDrive, Google.</small></div>
+<div class="card">👥 <b>Comunidad y soporte</b><br><small>Documentación, foros, código abierto.</small></div>
+<div class="card">🛡️ <b>Seguridad y actualizaciones</b><br><small>Parches, antivirus, licencias.</small></div>
+</div>
+<p>Ejemplo: Android combina el kernel Linux, Google Play, miles de fabricantes y millones de desarrolladores.</p>
+</section>
+
+<section id="t6" class="rv">
+<h2><span class="n">6</span>Componentes del sistema operativo</h2>
+<div class="grid">
+<div class="card">🧠 <b>Kernel</b><br><small>Núcleo que controla hardware y recursos.</small></div>
+<div class="card">🔄 <b>Gestión de procesos</b><br><small>Crea, planifica y finaliza procesos e hilos.</small></div>
+<div class="card">🧮 <b>Gestión de memoria</b><br><small>Asigna y protege la RAM; memoria virtual y paginación.</small></div>
+<div class="card">📁 <b>Sistema de archivos</b><br><small>NTFS, ext4, APFS.</small></div>
+<div class="card">🖱️ <b>E/S y drivers</b><br><small>Controla dispositivos.</small></div>
+<div class="card">💻 <b>Shell / interfaz</b><br><small>Línea de comandos (CLI) o gráfica (GUI).</small></div>
+<div class="card">🔐 <b>Seguridad</b><br><small>Autenticación, permisos, aislamiento.</small></div>
+<div class="card">🌐 <b>Redes</b><br><small>Pila de protocolos de comunicación.</small></div>
+</div>
+</section>
+
+<section id="t7" class="rv">
+<h2><span class="n">7</span>Algoritmo del banquero</h2>
+<p>Propuesto por Edsger Dijkstra para <b>evitar interbloqueos (deadlocks)</b>. Antes de conceder un recurso, comprueba que el estado siga siendo <b>seguro</b>: que exista al menos una secuencia en la que todos los procesos puedan terminar, como un banco que solo presta si puede garantizar que todos sus clientes completen sus operaciones.</p>
+<p>Estructuras: <code>Available</code>, <code>Max</code>, <code>Allocation</code> y <code>Need = Max − Allocation</code>.</p>
+<div class="card">
+<h3>🎮 Simulador (Available inicial = 3 3 2)</h3>
+<button id="bn">Siguiente paso ▶</button><button class="g" id="br">Reiniciar</button>
+<p class="mono">Work = <b id="wk">3 3 2</b> · Secuencia: <b id="sq" style="color:var(--ok)">—</b></p>
+<div class="scr"><table id="bt"><tr><th>Proceso</th><th>Allocation</th><th>Max</th><th>Need</th></tr></table></div>
+<p id="bm" style="color:var(--mu)">Pulsa el botón: en cada paso se busca un proceso con Need ≤ Work.</p>
+</div>
+<p><b>Algoritmo de seguridad:</b> 1) Work = Available y Finish = false. 2) Buscar un i con Need[i] ≤ Work. 3) Work = Work + Allocation[i]; Finish[i] = true y repetir. 4) Si todos terminan, el estado es seguro.</p>
+<p><b>Solicitud:</b> se verifica Request ≤ Need y Request ≤ Available, se simula la asignación y se ejecuta el algoritmo de seguridad. Solo se concede si el estado resultante es seguro.</p>
+</section>
+
+<section id="t8" class="rv">
+<h2><span class="n">8</span>Hilos</h2>
+<p>Un <b>hilo (thread)</b> es la unidad básica de ejecución dentro de un proceso. Comparten código, datos y archivos, pero cada uno tiene su propio contador de programa, registros y pila.</p>
+<div class="card thr">
+<div class="mem">Proceso · memoria, código y archivos compartidos</div>
+<div class="th"><i></i><span>Hilo 1</span></div>
+<div class="th"><i style="animation-delay:-1s"></i><span>Hilo 2</span></div>
+<div class="th"><i style="animation-delay:-2s"></i><span>Hilo 3</span></div>
+</div>
+<div class="grid">
+<div class="card"><b>Ventajas</b><br><small>Interfaz que no se congela, menos costo que un proceso, aprovechan los núcleos.</small></div>
+<div class="card"><b>Modelos</b><br><small>Muchos a uno, uno a uno (Windows, Linux) y muchos a muchos.</small></div>
+<div class="card"><b>Retos</b><br><small>Condiciones de carrera y bloqueos; se resuelven con mutex y semáforos.</small></div>
+</div>
+</section>
+
+<section id="t9" class="rv">
+<h2><span class="n">9</span>Procesos</h2>
+<p>Un <b>proceso</b> es un programa en ejecución, con código, datos, heap, pila y estado del procesador. El SO lo representa con un <b>PCB</b> (PID, estado, registros, memoria y archivos abiertos).</p>
+<div class="card">
+<h3>🔁 Ciclo de vida (haz clic en un estado)</h3>
+<div class="st" id="sts"></div>
+<div id="sd"></div>
+</div>
+<h3>Planificación de la CPU</h3>
+<div class="grid">
+<div class="card"><b>FCFS</b><br><small>Primero en llegar, primero en ser atendido.</small></div>
+<div class="card"><b>SJF</b><br><small>Primero el proceso más corto.</small></div>
+<div class="card"><b>Round Robin</b><br><small>Turnos con un quantum de tiempo.</small></div>
+<div class="card"><b>Prioridades</b><br><small>Primero el de mayor prioridad.</small></div>
+</div>
+<p>Comunicación entre procesos: tuberías (pipes), memoria compartida, colas de mensajes y sockets.</p>
+</section>
+
+<section id="t10" class="rv">
+<h2><span class="n">10</span>Comentario personal de los sistemas operativos</h2>
+<div class="card">
+<p><i>[Reemplaza este texto con tu propia opinión. Te dejo una base.]</i></p>
+<p>Considero que el sistema operativo es la pieza más importante de cualquier computadora, porque sin él el hardware no podría aprovecharse. Durante el curso entendí que detrás de acciones sencillas, como abrir un programa o guardar un archivo, hay procesos, hilos, administración de memoria y mecanismos de protección trabajando de forma coordinada.</p>
+<p>Me pareció especialmente interesante el algoritmo del banquero, porque muestra cómo un problema real, el interbloqueo, puede prevenirse con lógica y planificación. También valoro la diferencia entre sistemas propietarios y de código abierto como Linux, que ha impulsado la innovación y el acceso al conocimiento.</p>
+</div>
+</section>
+
+<section id="t11" class="rv">
+<h2><span class="n">11</span>Comparación de sistemas operativos para servidores</h2>
+<div class="grid" id="sv"></div>
+<p><b>Conclusión:</b> Windows Server destaca donde se usan herramientas Microsoft; Linux domina la web y la nube por costo y flexibilidad; RHEL es la opción habitual con soporte empresarial; FreeBSD sobresale en redes y almacenamiento.</p>
+</section>
+</main>
+<footer>Sistemas Operativos 1 · Kevin Emanuel Gutiérrez Castillo · 2026</footer>
+
+<script>
+// Partículas
+(function(){var c=document.getElementById("cv"),x=c.getContext("2d"),P=[],w,h;
+function rs(){w=c.width=c.offsetWidth;h=c.height=c.offsetHeight}rs();addEventListener("resize",rs);
+for(var i=0;i<70;i++)P.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6});
+var col=getComputedStyle(document.documentElement).getPropertyValue("--a").trim()||"#4de1ff";
+function d(){x.clearRect(0,0,w,h);x.fillStyle=col;x.strokeStyle=col;
+P.forEach(function(p,i){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;
+x.globalAlpha=.8;x.beginPath();x.arc(p.x,p.y,2,0,6.3);x.fill();
+for(var j=i+1;j<P.length;j++){var q=P[j],dx=p.x-q.x,dy=p.y-q.y,s=dx*dx+dy*dy;
+if(s<14000){x.globalAlpha=.25*(1-s/14000);x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke()}}});
+requestAnimationFrame(d)}d()})();
+// Texto escribiéndose
+(function(){var t=["Procesos · Hilos · Memoria","El cerebro de tu computadora","Kernel, shell y algo más…"],i=0,j=0,del=false,e=document.getElementById("ty");
+function s(){var f=t[i];e.textContent=f.slice(0,j);
+if(!del&&j<f.length){j++;setTimeout(s,70)}else if(!del){del=true;setTimeout(s,1300)}
+else if(j>0){j--;setTimeout(s,30)}else{del=false;i=(i+1)%t.length;setTimeout(s,300)}}s()})();
+// Revelar y progreso
+var io=new IntersectionObserver(function(en){en.forEach(function(r){if(r.isIntersecting)r.target.classList.add("on")})},{threshold:.12});
+document.querySelectorAll(".rv").forEach(function(e){io.observe(e)});
+addEventListener("scroll",function(){var d=document.documentElement;document.getElementById("bar").style.width=(scrollY/(d.scrollHeight-innerHeight)*100)+"%"});
+// Banquero
+var A=[[0,1,0],[2,0,0],[3,0,2],[2,1,1],[0,0,2]],M=[[7,5,3],[3,2,2],[9,0,2],[2,2,2],[4,3,3]],AV=[3,3,2],W,F,Q,tb=document.getElementById("bt");
+function N(i){return M[i].map(function(v,k){return v-A[i][k]})}
+function rb(c){var h="<tr><th>Proceso</th><th>Allocation</th><th>Max</th><th>Need</th></tr>";
+for(var i=0;i<5;i++)h+="<tr class=\""+(F[i]?"fin":"")+(c===i?" cur":"")+"\"><td>P"+i+"</td><td>"+A[i].join(" ")+"</td><td>"+M[i].join(" ")+"</td><td>"+N(i).join(" ")+"</td></tr>";
+tb.innerHTML=h;document.getElementById("wk").textContent=W.join(" ");document.getElementById("sq").textContent=Q.length?Q.map(function(i){return "P"+i}).join(" → "):"—"}
+function rst(){W=AV.slice();F=[0,0,0,0,0];Q=[];rb(-1);document.getElementById("bm").textContent="Pulsa el botón: en cada paso se busca un proceso con Need ≤ Work."}
+document.getElementById("br").onclick=rst;
+document.getElementById("bn").onclick=function(){var m=document.getElementById("bm");
+if(Q.length===5){m.textContent="✅ Estado seguro. Secuencia segura encontrada.";return}
+for(var i=0;i<5;i++){if(!F[i]&&N(i).every(function(v,k){return v<=W[k]})){
+m.textContent="P"+i+" necesita "+N(i).join(" ")+" ≤ Work "+W.join(" ")+" → termina y devuelve "+A[i].join(" ")+".";
+W=W.map(function(v,k){return v+A[i][k]});F[i]=1;Q.push(i);rb(i);return}}
+m.textContent="⚠️ Ningún proceso puede continuar: estado inseguro."};
+rst();
+// Estados de proceso
+var ST=[["Nuevo","El proceso se está creando."],["Listo","Tiene todo, espera que el planificador le dé CPU."],["Ejecución","Está usando la CPU."],["Bloqueado","Espera una operación de E/S o un evento."],["Terminado","Finalizó y libera sus recursos."]],cur=0,sts=document.getElementById("sts"),sd=document.getElementById("sd"),tm;
+ST.forEach(function(s,i){var b=document.createElement("div");b.className="s";b.textContent=s[0];b.onclick=function(){cur=i;sh();clearInterval(tm)};sts.appendChild(b);if(i<4){var a=document.createElement("span");a.className="ar";a.textContent="➜";sts.appendChild(a)}});
+function sh(){sts.querySelectorAll(".s").forEach(function(e,i){e.classList.toggle("on",i===cur)});sd.textContent=ST[cur][1]}
+sh();tm=setInterval(function(){cur=(cur+1)%5;sh()},2200);
+// Servidores
+var SV=[["Windows Server","Propietaria, de pago","Active Directory, .NET, SQL Server",90,95,35],["Ubuntu Server","Gratuito, soporte Canonical","Web, nube y contenedores",70,85,90],["Red Hat (RHEL)","Suscripción empresarial","Banca y entornos críticos",65,98,50],["Debian","Gratuito, comunidad","Servidores estables a largo plazo",65,96,92],["FreeBSD","Gratuito, licencia BSD","Redes, firewalls y almacenamiento",40,95,92]],g=document.getElementById("sv");
+SV.forEach(function(s){var d=document.createElement("div");d.className="card";
+d.innerHTML="<h3>"+s[0]+"</h3><small>"+s[1]+"<br>"+s[2]+"</small><div style=\"margin-top:10px\"><div class=\"lb\"><span>Facilidad</span><span>"+s[3]+"%</span></div><div class=\"bd\"><i style=\"--w:"+s[3]+"%\"></i></div><div class=\"lb\"><span>Estabilidad</span><span>"+s[4]+"%</span></div><div class=\"bd\"><i style=\"--w:"+s[4]+"%\"></i></div><div class=\"lb\"><span>Ahorro</span><span>"+s[5]+"%</span></div><div class=\"bd\"><i style=\"--w:"+s[5]+"%\"></i></div></div>";g.appendChild(d)});
+</script>
+</body>
+</html>
